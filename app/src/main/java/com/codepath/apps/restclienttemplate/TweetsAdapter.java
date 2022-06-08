@@ -86,7 +86,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
-            Glide.with(context).load(tweet.entity.getString("entity")).into(ivBodyImage);
+            Glide.with(context).load(tweet.entity).into(ivBodyImage);
         }
     }
 }
