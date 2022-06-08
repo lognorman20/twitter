@@ -38,4 +38,15 @@
         android:text="TextView"
         tools:text="butter is not good and neither is cheese" />
 
+    <ImageView
+        android:id="@+id/ivBodyImage"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </RelativeLayout>

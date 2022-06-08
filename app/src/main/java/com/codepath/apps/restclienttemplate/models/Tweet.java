@@ -10,6 +10,7 @@ import java.util.List;
 
 @Parcel
 public class Tweet {
+    public JSONObject entity;
     public String body;
     public String createdAt;
     public User user;
@@ -23,6 +24,7 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.entity = jsonObject.getJSONObject("entity");
         return tweet;
     }
 

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -42,7 +43,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         // Get data at the given position
         Tweet tweet = tweets.get(position);
         // Bind the tweet with view holder
-        holder.bind(tweet);
+        try {
+            holder.bind(tweet);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -66,19 +71,22 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfileImage;
+        ImageView ivBodyImage;
         TextView tvBody;
         TextView tvScreenName;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
+            ivBodyImage = itemView.findViewById(R.id.ivBodyImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
         }
 
-        public void bind(Tweet tweet) {
+        public void bind(Tweet tweet) throws JSONException {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
+            Glide.with(context).load(tweet.entity.getString("entity")).into(ivBodyImage);
         }
     }
 }
