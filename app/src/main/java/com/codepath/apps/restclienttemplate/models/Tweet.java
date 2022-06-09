@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Parcel
 public class Tweet {
+    private static String TAG = "LoadJSONFromAPI";
+
     public String entity;
     public String body;
     public String createdAt;
@@ -24,7 +28,12 @@ public class Tweet {
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
-        tweet.entity = jsonObject.getJSONArray("media").getJSONObject(0).getString("media_url_https");
+//        if ((jsonObject.getJSONObject("entities").getJSONArray("media") != null)){
+//            Log.i(TAG, "yessirski");
+//            tweet.entity = jsonObject.getJSONArray("media").getJSONObject(0).getString("media_url_https");
+//        } else {
+//            Log.e(TAG, "spotemgotem");
+//        }
         return tweet;
     }
 
