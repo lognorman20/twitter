@@ -89,42 +89,104 @@
         android:layout_marginEnd="-48dp"
         android:background="@android:color/holo_red_dark" />
 
-    <EditText
-        android:id="@+id/etDetailedReply"
-        android:layout_width="392dp"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="307dp"
-        android:layout_marginEnd="5dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine" />
+        android:layout_marginStart="-38dp"
+        android:layout_marginTop="309dp"
+        android:layout_marginEnd="-92dp"
+        android:background="@android:color/holo_red_dark" />
 
-    <Button
-        android:id="@+id/btnReply"
-        android:layout_width="76dp"
-        android:layout_height="38dp"
-        android:layout_below="@+id/etDetailedReply"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="327dp"
-        tools:text="Reply" />
+    <!-- Comment button  -->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <!-- Share button  -->
+
+    <EditText
+        android:id="@+id/etDetailedReply"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="283dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="339dp"
+        android:layout_marginEnd="4dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/what_s_on_your_mind"
+        android:minLines="5"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/tvDetailedReplyingTo"
+        android:layout_width="137dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="319dp"
+        android:layout_marginEnd="266dp"
         android:textSize="10sp"
         tools:text="Replying to @souljaboy" />
+
+    <Button
+        android:id="@+id/btnReply"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="320dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="204dp"
+        tools:text="Reply" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/comment_icon" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/retweet_icon" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="252dp"
+        android:background="@drawable/heart_icon" />
+
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="307dp"
+        android:layout_marginTop="250dp"
+        android:background="@drawable/share_icon" />
+
+    <!-- Like button  -->
+
+    <!-- Repost button  -->
 
 </RelativeLayout>
