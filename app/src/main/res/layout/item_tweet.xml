@@ -35,7 +35,6 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
-        android:text="TextView"
         tools:text="butter is not good and neither is cheese" />
 
     <ImageView
@@ -48,5 +47,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTimeAgo"
+        android:layout_width="130dp"
+        android:layout_height="22dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="147dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        tools:text="3d" />
 
 </RelativeLayout>

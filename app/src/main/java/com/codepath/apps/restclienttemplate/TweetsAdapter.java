@@ -74,19 +74,28 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivBodyImage;
         TextView tvBody;
         TextView tvScreenName;
+        TextView tvTimeAgo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             ivBodyImage = itemView.findViewById(R.id.ivBodyImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
+            tvTimeAgo = itemView.findViewById(R.id.tvTimeAgo);
         }
 
         public void bind(Tweet tweet) throws JSONException {
+            // setting the tweet's body text
             tvBody.setText(tweet.body);
+            // setting the tweets username
             tvScreenName.setText(tweet.user.screenName);
+            // setting user profile picture
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
-            Glide.with(context).load(tweet.entity).into(ivBodyImage);
+            // setting the body image if any
+            if (tweet.entity != "cheese"){
+                Glide.with(context).load(tweet.entity).into(ivBodyImage);
+            }
+            tvTimeAgo.setText(tweet.timeAgo);
         }
     }
 }
