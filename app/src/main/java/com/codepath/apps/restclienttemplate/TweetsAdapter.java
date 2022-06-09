@@ -1,7 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.json.JSONException;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -77,11 +75,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvTimeAgo;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
-            ivBodyImage = itemView.findViewById(R.id.ivBodyImage);
-            tvBody = itemView.findViewById(R.id.tvBody);
-            tvScreenName = itemView.findViewById(R.id.tvScreenName);
-            tvTimeAgo = itemView.findViewById(R.id.tvTimeAgo);
+            ivProfileImage = itemView.findViewById(R.id.ivDetailedProfileImage);
+            ivBodyImage = itemView.findViewById(R.id.ivDetailedBodyImage);
+            tvBody = itemView.findViewById(R.id.tvDetailedTweetBody);
+            tvScreenName = itemView.findViewById(R.id.tvDetailedScreenName);
+            tvTimeAgo = itemView.findViewById(R.id.tvDetailedTimeAgo);
         }
 
         public void bind(Tweet tweet) throws JSONException {
