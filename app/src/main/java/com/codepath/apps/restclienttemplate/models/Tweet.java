@@ -28,14 +28,28 @@ public class Tweet {
     public String createdAt;
     public User user;
     public String timeAgo;
+    public boolean isFavorited;
+    public boolean isRetweeted;
+    public int retweetedCount;
+    public int favoriteCount;
+    public String id;
+
 
     // empty constructor needed for parceler
     public Tweet(){}
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
+        if (jsonObject.has("retweeted_status")){
+            return null;
+        }
         Tweet tweet = new Tweet();
         // from api endpoint documentation
         tweet.body = jsonObject.getString("text");
+        tweet.id = jsonObject.getString("id_str");
+        tweet.isFavorited = jsonObject.getBoolean("favorited");
+        tweet.isRetweeted = jsonObject.getBoolean("retweeted");
+        tweet.retweetedCount = jsonObject.getInt("retweet_count");
+        tweet.favoriteCount = jsonObject.getInt("favorite_count");
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         tweet.timeAgo = tweet.getRelativeTimeAgo(jsonObject.getString("created_at"));
@@ -44,13 +58,18 @@ public class Tweet {
         } else {
             tweet.entity = "cheese";
         }
+//        tweet.isFavorited = jsonObject.
         return tweet;
     }
 
     public static List<Tweet> fromJsonArray(JSONArray jsonArray) throws JSONException {
         List<Tweet> tweets = new ArrayList<>();
-        for (int i = 0; i < jsonArray.length(); i++){
-            tweets.add(fromJson(jsonArray.getJSONObject(i)));
+        for (int i = 0; i < jsonArray.length(); i++) {
+            // skipping retweets
+            Tweet newTweet = fromJson(jsonArray.getJSONObject(i));
+            if (newTweet != null) {
+                tweets.add(newTweet);
+            }
         }
         return tweets;
     }

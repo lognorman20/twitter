@@ -50,10 +50,11 @@
 
     <ImageView
         android:id="@+id/ivDetailedBodyImage"
-        android:layout_width="237dp"
-        android:layout_height="100dp"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tvDetailedTweetBody"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.587"
@@ -64,12 +65,16 @@
 
     <TextView
         android:id="@+id/tvDetailedTimeAgo"
-        android:layout_width="130dp"
-        android:layout_height="22dp"
+        android:layout_width="77dp"
+        android:layout_height="21dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="193dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="9dp"
         android:layout_toEndOf="@+id/tvDetailedScreenName"
+        android:textAlignment="viewEnd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toEndOf="@+id/tvDetailedScreenName"

@@ -4,6 +4,8 @@ import static android.view.View.GONE;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
 import org.parceler.Parcels;
 
 import java.util.List;
+
+import okhttp3.Headers;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
     Context context;
@@ -96,6 +101,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.body);
             // setting the tweets username
             tvScreenName.setText(tweet.user.screenName);
+            // set the favorite count
+            tvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
             // setting user profile picture
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
             // setting the body image if any
@@ -111,13 +118,38 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 @Override
                 public void onClick(View view) {
                     // if not already favorited, then
+                    if (!tweet.isFavorited){
                         // tell twitter that the user wants to favorite that tweet
+                        TwitterApp.getRestClient(context).favorite(tweet.id, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Headers headers, JSON json) {
+                                Log.i("adapter", "This should've been favorited, go check");
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
+                                Log.e("adapter", "MAN WHAT??");
+                            }
+                        });
                         // change the star to a filled in star
+                        tweet.isFavorited = true;
+                        Drawable newImage = context.getDrawable(android.R.drawable.btn_star_big_on);
+                        ibFavorite.setImageDrawable(newImage);
                         // increment the text inside tvFavoriteCount
-                    // else if already favorited
+                        tweet.favoriteCount++;
+                        tvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
+                    } else {
+                        tweet.isFavorited = false;
+                        // if tweet is already favorited
                         // tell twitter to unfavorite the tweet
+
                         // change the drawable back to off
+                        Drawable newImage = context.getDrawable(android.R.drawable.btn_star_big_off);
+                        ibFavorite.setImageDrawable(newImage);
                         // decrement tvFavoriteCount
+                        tweet.favoriteCount--;
+                        tvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
+                    }
                 }
             });
         }
