@@ -3,9 +3,11 @@ package com.codepath.apps.restclienttemplate;
 import static android.view.View.GONE;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -75,6 +78,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         TextView tvBody;
         TextView tvScreenName;
         TextView tvTimeAgo;
+        ImageButton ibFavorite;
+        TextView tvFavoriteCount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivDetailedProfileImage);
@@ -82,6 +87,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody = itemView.findViewById(R.id.tvDetailedTweetBody);
             tvScreenName = itemView.findViewById(R.id.tvDetailedScreenName);
             tvTimeAgo = itemView.findViewById(R.id.tvDetailedTimeAgo);
+            tvFavoriteCount = itemView.findViewById(R.id.tvFavoriteCount);
+            ibFavorite = itemView.findViewById(R.id.ibFavorite);
         }
 
         public void bind(Tweet tweet) throws JSONException {
@@ -99,6 +106,20 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 ivBodyImage.setVisibility(GONE);
             }
             tvTimeAgo.setText(tweet.timeAgo);
+
+            ibFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // if not already favorited, then
+                        // tell twitter that the user wants to favorite that tweet
+                        // change the star to a filled in star
+                        // increment the text inside tvFavoriteCount
+                    // else if already favorited
+                        // tell twitter to unfavorite the tweet
+                        // change the drawable back to off
+                        // decrement tvFavoriteCount
+                }
+            });
         }
     }
 }

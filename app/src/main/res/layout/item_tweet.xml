@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
@@ -12,8 +12,10 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="32dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -21,9 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivDetailedProfileImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045"
         tools:text="souljaboy" />
 
     <TextView
@@ -31,22 +37,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvDetailedScreenName"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivDetailedProfileImage"
         android:autoLink="all"
         android:linksClickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toEndOf="@+id/ivDetailedProfileImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24"
         tools:text="butter is not good and neither is cheese" />
 
     <ImageView
         android:id="@+id/ivDetailedBodyImage"
-        android:layout_width="329dp"
-        android:layout_height="wrap_content"
+        android:layout_width="237dp"
+        android:layout_height="100dp"
         android:layout_below="@+id/tvDetailedTweetBody"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.587"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetailedTweetBody"
+        app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -56,10 +69,38 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="147dp"
         android:layout_toEndOf="@+id/tvDetailedScreenName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintStart_toEndOf="@+id/tvDetailedScreenName"
+        tools:layout_editor_absoluteY="3dp"
         tools:text="3d" />
+
+    <TextView
+        android:id="@+id/tvFavoriteCount"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ibFavorite"
+        android:layout_marginLeft="21dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_toRightOf="@+id/ibFavorite"
+        android:text="0" />
+
+    <ImageButton
+        android:id="@+id/ibFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_below="@+id/tvDetailedTweetBody"
+
+        android:layout_marginLeft="-39dp"
+        android:layout_marginTop="38dp"
+        android:layout_toRightOf="@+id/ivDetailedProfileImage"
+        app:layout_constraintEnd_toStartOf="@+id/ivDetailedBodyImage"
+        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="124dp"
+        tools:srcCompat="@android:drawable/btn_star" />
 
 </RelativeLayout>
