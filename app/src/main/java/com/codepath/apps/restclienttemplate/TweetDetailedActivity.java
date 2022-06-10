@@ -24,7 +24,6 @@ public class TweetDetailedActivity extends AppCompatActivity {
 
     EditText etDetailedReply;
     Button btnReply;
-
     TwitterClient client;
 
     @Override

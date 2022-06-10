@@ -1,5 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
+import static android.view.View.GONE;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +93,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
             // setting the body image if any
             if (tweet.entity != "cheese"){
+                ivBodyImage.setVisibility(View.VISIBLE);
                 Glide.with(context).load(tweet.entity).into(ivBodyImage);
+            } else {
+                ivBodyImage.setVisibility(GONE);
             }
             tvTimeAgo.setText(tweet.timeAgo);
         }
